@@ -1,4 +1,4 @@
-import Edit from "@/components/Edit"
+import Edit from "@/app/components/Edit"
 
 import React from 'react'
 

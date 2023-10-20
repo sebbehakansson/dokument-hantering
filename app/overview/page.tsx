@@ -1,8 +1,7 @@
 "use client";
-import { Post } from "../../../interfaces";
+import { Post } from "@/interfaces";
 // import { dbQuery } from "@/src/lib/db";
 import React, { useEffect, useState } from "react";
-import AddDoc from "../components/AddDoc";
 
 export default function Documents() {
   const [posts, setPosts] = useState([]);
@@ -22,13 +21,12 @@ export default function Documents() {
     <div key={post.id}>
       <h1>{post.title}</h1>
       <p>{post.description}</p>
-      <p>{post.createdAt.toString()}</p>
+      <p>{post.author}</p>
     </div>
   ));
 
   return (
     <div className="max-w-7xl m-auto min-h-screen text-center p-10">
-      <AddDoc />
       {documentData}
     </div>
   );
