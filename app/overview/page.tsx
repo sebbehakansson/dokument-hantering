@@ -1,12 +1,9 @@
 "use client";
 import { Post } from "@/interfaces";
-// import { dbQuery } from "@/src/lib/db";
 import React, { useEffect, useState } from "react";
 
 export default function Documents() {
   const [posts, setPosts] = useState([]);
-  // const query = "SELECT * FROM schoolproject";
-  // const posts = dbQuery({ query, values: [] });
   useEffect(() => {
     const getPosts = async () => {
       const result = await fetch("/api");
@@ -15,11 +12,10 @@ export default function Documents() {
     };
     getPosts();
   }, []);
-  console.log(posts);
 
   const documentData = (posts as Post[]).map((post: Post) => (
-    <div key={post.id}>
-      <h1>{post.title}</h1>
+    <div key={post.id} className="bg-white rounded shadow p-4 m-4">
+      <h1 className="text-xl font-bold">{post.title}</h1>
       <p>{post.description}</p>
       <p>{post.author}</p>
     </div>
