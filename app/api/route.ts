@@ -12,11 +12,15 @@ export async function GET(req: Request, res: Response) {
 export async function POST(req: Request, res: Response) {
     const data = await req.json();
 
-    await dbQuery({
-        query: `INSERT INTO dokument(title,description,author) VALUES('${data.title}','${data.content}','${data.user}')`,
-        values: []
-    });
-
-
+    try {
+        await dbQuery({
+            query: `INSERT INTO dokument(title,description,author) VALUES('${data.title}','${data.content}','${data.user}')`,
+            values: []
+        });
+    } catch (error) {
+        return NextResponse.json(500);
+    }
+    
     return NextResponse.json(200);
 }
+
