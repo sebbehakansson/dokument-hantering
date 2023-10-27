@@ -12,6 +12,15 @@ export default function AddNew() {
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    if ( 
+      newPost.title.trim() === "" ||
+      newPost.content.trim() === "" ||
+      newPost.user.trim() === "" 
+    ) {
+      alert("Fyll i alla fälten!")
+      return;
+    }
+
     const res = await fetch("/api",  {
       method: "POST",
       body: JSON.stringify(newPost),

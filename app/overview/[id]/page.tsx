@@ -20,7 +20,9 @@ export default function Document({ params }: { params: { id: string } }) {
   return (
     <div className="max-w-7xl m-auto min-h-screen text-center p-10">
       {post && <>
-        {post.title}
+        <h1 className="text-2xl font-bold">{post.title}</h1>
+        <span className="mt-1 mb-4">Written by {post.author}</span>
+        <p className="text-sm font-medium">{post.description}</p>
       </>}
     </div>
   );
